@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 
 import 'dotenv/config';
-import fs from 'fs';
 import TelegramBot from 'node-telegram-bot-api';
 
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
@@ -39,8 +38,6 @@ bot.on('message', msg => {
 });
 
 bot.on('new_chat_members', async msg => {
-	fs.appendFileSync('newMembers.json', JSON.stringify(msg) + "\n");
-
 	for (const member of msg.new_chat_members) {
 		if (member.is_bot) {
 			continue;
