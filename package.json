@@ -4,7 +4,6 @@
  "version": "0.0.1",
  "license": "MIT",
  "dependencies": {
-  "dotenv": "^16.0.2",
   "node-telegram-bot-api": "^0.64.0"
  }
 }

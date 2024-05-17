@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
-
-import 'dotenv/config';
 import TelegramBot from 'node-telegram-bot-api';
+
+process.loadEnvFile();
 
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 
