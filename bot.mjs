@@ -43,6 +43,7 @@ bot.on('new_chat_members', async msg => {
 			continue;
 		}
 
+		console.log("Deleted new_chat_members message", msg);
     bot.deleteMessage(msg.chat.id, msg.message_id);
 	}
 });
