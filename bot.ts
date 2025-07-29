@@ -1,5 +1,9 @@
 import TelegramBot from 'node-telegram-bot-api';
 
+if (process.loadEnvFile) {
+	process.loadEnvFile();
+}
+
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN!, { polling: true });
 
 const NOT_WELCOME_MESSAGE = [
