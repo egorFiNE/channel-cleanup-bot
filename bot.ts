@@ -1,9 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api';
 
-if (process.loadEnvFile) {
-	process.loadEnvFile();
-}
-
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN!, { polling: true });
 
 const NOT_WELCOME_MESSAGE = [
@@ -36,7 +32,13 @@ bot.on('message', msg => {
   processPrivateMessage(msg);
 });
 
+bot.on('left_chat_members', async msg => {
+  console.log(new Date().toISOString(), "left_chat_members", JSON.stringify(msg));
+});
+
 bot.on('new_chat_members', async msg => {
+  console.log(new Date().toISOString(), "new_chat_members", JSON.stringify(msg));
+
   for (const member of msg.new_chat_members!) {
     if (member.is_bot) {
       continue;
